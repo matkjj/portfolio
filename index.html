@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mateo Llorens - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/portfolio.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/a2e0e6cfd6.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="barra-navegacion">
+        <div class="contenedor-navegacion">
+            <div class="logo">Portfolio</div>
+            <ul class="menu-navegacion" id="menu-navegacion">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="menu-hamburguesa" id="menu-hamburguesa">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="inicio" class="hero">
+        <div class="contenido-hero">
+            <div class="texto-hero">
+                <h1>Soy <span class="resaltado">Mateo Llorens</span></h1>
+                <h2>Estudiante de Desarrollo de Software</h2>
+                <p>Estudio la Tecnicatura en Desarrollo de Software en UADE. Me apasiona la tecnología y en mis tiempos libres disfruto del fútbol.</p>
+                <div class="botones-hero">
+                    <a href="#proyectos" class="boton primario">Ver Proyectos</a>
+                    <a href="#contacto" class="boton secundario">Contactar</a>
+                </div>
+            </div>
+            <div class="imagen-hero">
+                <div class="circulo-perfil">
+                    <img class="foto-perfil" src="img/mateo2.png" alt="Mateo Llorens">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre-mi" class="sobre-mi">
+        <div class="contenedor">
+            <h2>Sobre Mí</h2>
+            <div class="contenido-sobre-mi">
+                <div class="texto-sobre-mi">
+                    <p>
+                        Soy Mateo Llorens, estudiante de la <strong>Tecnicatura en Desarrollo de Software en UADE</strong>. 
+                        Desde chiquito siempre me gustó el mundo de la tecnología y cómo podemos crear soluciones 
+                        innovadoras a través de esta.
+                    </p>
+                </div>
+                <div class="intereses">
+                    <div class="tarjeta-interes">
+                        <i class="fas fa-microchip"></i>
+                        <h3>Tecnología</h3>
+                        <p>Lo que me vuelve loco de la tecnología es que no hay límites, lo que imagines lo podés crear</p>
+                    </div>
+                    <div class="tarjeta-interes">
+                        <i class="fas fa-futbol-ball"></i>
+                        <h3>Fútbol</h3>
+                        <p>Fanático del fútbol y del deporte en general, me gusta tanto como verlo como practicarlo</p>
+                    </div>
+                    <div class="tarjeta-interes">
+                        <i class="fas fa-book-reader"></i>
+                        <h3>Estudios</h3>
+                        <p>Tecnicatura en Desarrollo de Software - UADE</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proyectos" class="proyectos">
+        <div class="contenedor">
+            <h2>Mis Proyectos</h2>
+            <div class="grilla-proyectos">
+                <a href="calculadora.html" target="_blank" class="tarjeta-proyecto">
+                    <div class="icono-proyecto">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Calculadora Web</h3>
+                    <p>Una calculadora funcional desarrollada con HTML, CSS y JavaScript</p>
+                    <div class="etiquetas-tecnologias">
+                        <span><i class="fab fa-html5"></i> HTML</span>
+                        <span><i class="fab fa-css3-alt"></i> CSS</span>
+                        <span><i class="fab fa-js-square"></i> JavaScript</span>
+                    </div>
+                </a>
+                <a href="galeria-ia.html" target="_blank" class="tarjeta-proyecto">
+                    <div class="icono-proyecto">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <h3>Galería de Fotos IA</h3>
+                    <p>Una colección de imágenes generadas con IA.</p>
+                    <div class="etiquetas-tecnologias">
+                        <span><i class="fab fa-html5"></i> HTML</span>
+                        <span><i class="fab fa-css3-alt"></i> CSS</span>
+                        <span><i class="fas fa-robot"></i> Imágenes IA</span>
+                    </div>
+                </a>
+                <a href="tateti.html" target="_blank" class="tarjeta-proyecto">
+                    <div class="icono-proyecto">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Ta Te Ti</h3>
+                    <p>Un juego clásico de Ta Te Ti</p>
+                    <div class="etiquetas-tecnologias">
+                        <span><i class="fab fa-html5"></i> HTML</span>
+                        <span><i class="fab fa-css3-alt"></i> CSS</span>
+                        <span><i class="fab fa-js"></i> JavaScript</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contacto">
+        <div class="contenedor">
+            <h2>Contacto</h2>
+            <div class="contenido-contacto">
+                <div class="info-contacto">
+                    <h3>¡Hablemos!</h3>
+                    <p>Si tenés alguna duda sobre mí no dudes en contactarme.</p>
+                    <div class="detalles-contacto">
+                        <div class="item-contacto">
+                            <i class="fas fa-envelope"></i>
+                            <span>mateollorens05@gmail.com</span>
+                        </div>
+                        <div class="item-contacto">
+                            <i class="fas fa-phone"></i>
+                            <span>+54 11 6255 2005</span>
+                        </div>
+                        <div class="item-contacto">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Buenos Aires, Argentina</span>
+                        </div>
+                        <div class="item-contacto">
+                            <i class="fas fa-university"></i>
+                            <span>UADE - Desarrollo de Software</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="formulario-contacto">
+                    <input type="text" placeholder="Tu nombre" required>
+                    <input type="email" placeholder="Tu email" required>
+                    <textarea placeholder="Tu mensaje" rows="5" required></textarea>
+                    <button type="submit" class="boton primario">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="pie">
+        <p>Mateo Llorens. Estudiante de Desarrollo de Software - 2025</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

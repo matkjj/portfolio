@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ta Te Ti</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="img/tateti.ico" type="image/x-icon">
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f0f4f8, #e0e7ee); 
+            margin: 0;
+            padding-top: 80px; 
+            color: #333;
+        }
+
+        .barra-navegacion {
+            width: 100%;
+            background-color: #4a5568;
+            padding: 15px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: fixed; 
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .contenedor-navegacion {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .boton-volver {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 6px;
+            background-color: #6366f1; 
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .boton-volver:hover {
+            background-color: #5856eb;
+            transform: translateY(-2px);
+        }
+
+        .boton-volver i {
+            font-size: 1.1em;
+        }
+
+        .contenedor-juego {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            margin-top: 50px; 
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 2.5em;
+            border-bottom: 2px solid #6366f1;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .estado-juego {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .tablero {
+            display: grid;
+            grid-template-columns: repeat(3, 100px); 
+            grid-template-rows: repeat(3, 100px); 
+            gap: 8px; 
+            background-color: #6366f1; 
+            border:3px solid #4a5568; 
+            border-radius: 8px;
+            overflow: hidden; 
+            margin: 0 auto 25px auto; 
+            width: fit-content;
+        }
+
+        .celda {
+            width: 100px; 
+            height: 100px; 
+            background-color: #e2e8f0; 
+            border: none; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3.5em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            color: #333; 
+        }
+
+        .celda:hover {
+            background-color: #cbd5e0; 
+        }
+
+        .celda:active {
+            transform: scale(0.98);
+        }
+        
+        .celda.x {
+            color: #ef4444; 
+        }
+
+        .celda.o {
+            color: #3b82f6; 
+        }
+
+        .celda.ganadora { 
+            background-color: #2ecc71; 
+            color: white;
+            animation: flashWin 0.7s infinite alternate;
+        }
+
+        @keyframes flashWin {
+            from { background-color: #2ecc71; }
+            to { background-color: #27ae60; }
+        }
+
+        .boton-reiniciar {
+            background-color: #10b981; 
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .boton-reiniciar:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 480px) {
+            .tablero {
+                grid-template-columns: repeat(3, 80px);
+                grid-template-rows: repeat(3, 80px);
+                gap: 5px;
+                width: fit-content;
+            }
+            .celda {
+                width: 80px;
+                height: 80px;
+                font-size: 3em;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .estado-juego {
+                font-size: 1.2em;
+            }
+            .contenedor-juego {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="barra-navegacion">
+        <div class="contenedor-navegacion">
+            <a href="index.html" class="boton-volver">
+                <i class="fas fa-arrow-left"></i> Volver a Portafolio
+            </a>
+        </div>
+    </nav>
+
+    <div class="contenedor-juego">
+        <h1>Ta Te Ti</h1>
+        <div class="estado-juego" id="estadoJuego">Turno del Jugador X</div>
+        <div class="tablero" id="tablero">
+            <div class="celda" data-celda-indice="0"></div>
+            <div class="celda" data-celda-indice="1"></div>
+            <div class="celda" data-celda-indice="2"></div>
+            <div class="celda" data-celda-indice="3"></div>
+            <div class="celda" data-celda-indice="4"></div>
+            <div class="celda" data-celda-indice="5"></div>
+            <div class="celda" data-celda-indice="6"></div>
+            <div class="celda" data-celda-indice="7"></div>
+            <div class="celda" data-celda-indice="8"></div>
+        </div>
+        <button class="boton-reiniciar" id="reiniciarJuego">Reiniciar Juego</button>
+    </div>
+
+    <script>
+        const celdas = document.querySelectorAll('.celda');
+        const estadoJuegoDisplay = document.getElementById('estadoJuego');
+        const reiniciarBoton = document.getElementById('reiniciarJuego');
+
+        let tableroEstado = ['', '', '', '', '', '', '', '', ''];
+        let jugadorActual = 'X'; 
+        let juegoActivo = true;
+
+        const condicionesGanadoras = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], 
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], 
+            [0, 4, 8], [2, 4, 6]             
+        ];
+
+        function manejarClickCelda(evento) {
+            const celdaClickeada = evento.target;
+            const indiceCeldaClickeada = parseInt(celdaClickeada.dataset.celdaIndice);
+
+            if (tableroEstado[indiceCeldaClickeada] !== '' || !juegoActivo || jugadorActual === 'O') {
+                return;
+            }
+
+            realizarMovimiento(indiceCeldaClickeada, jugadorActual);
+            
+            verificarResultado();
+            
+            if (juegoActivo) {
+                cambiarJugador();
+                if (jugadorActual === 'O') {
+                    estadoJuegoDisplay.textContent = 'Turno de la IA (O)';
+                    setTimeout(movimientoIA, 700); 
+                }
+            }
+        }
+
+        function realizarMovimiento(indice, jugador) {
+            tableroEstado[indice] = jugador;
+            celdas[indice].textContent = jugador;
+            celdas[indice].classList.add(jugador.toLowerCase());
+        }
+
+        function cambiarJugador() {
+            jugadorActual = jugadorActual === 'X' ? 'O' : 'X';
+            if (juegoActivo && jugadorActual === 'X') { 
+                estadoJuegoDisplay.textContent = `Turno del Jugador ${jugadorActual}`;
+            }
+        }
+
+        function verificarResultado() {
+            let juegoGanado = false;
+
+            for (let i = 0; i < condicionesGanadoras.length; i++) {
+                const condicionGanadora = condicionesGanadoras[i];
+                let a = tableroEstado[condicionGanadora[0]];
+                let b = tableroEstado[condicionGanadora[1]];
+                let c = tableroEstado[condicionGanadora[2]];
+
+                if (a === '' || b === '' || c === '') {
+                    continue; 
+                }
+                if (a === b && b === c) {
+                    juegoGanado = true;
+                    estadoJuegoDisplay.textContent = `¡El Jugador ${jugadorActual} ha ganado!`;
+                    juegoActivo = false;
+                    condicionGanadora.forEach(index => {
+                        celdas[index].classList.add('ganadora');
+                    });
+                    break;
+                }
+            }
+
+            if (!juegoGanado && !tableroEstado.includes('')) {
+                estadoJuegoDisplay.textContent = '¡Empate!';
+                juegoActivo = false;
+            }
+        }
+
+        function reiniciarJuego() {
+            tableroEstado = ['', '', '', '', '', '', '', '', ''];
+            jugadorActual = 'X';
+            juegoActivo = true;
+            estadoJuegoDisplay.textContent = 'Turno del Jugador X';
+
+            celdas.forEach(celda => {
+                celda.textContent = '';
+                celda.classList.remove('x', 'o', 'ganadora');
+            });
+        }
+
+        function movimientoIA() {
+            if (!juegoActivo) return;
+
+            let movimientoElegido = -1;
+
+            movimientoElegido = buscarLineaGanadora(tableroEstado, 'O');
+            if (movimientoElegido !== -1) {
+                realizarMovimiento(movimientoElegido, 'O');
+                verificarResultado();
+                if (juegoActivo) cambiarJugador();
+                return;
+            }
+
+            movimientoElegido = buscarLineaGanadora(tableroEstado, 'X');
+            if (movimientoElegido !== -1) {
+                realizarMovimiento(movimientoElegido, 'O');
+                verificarResultado();
+                if (juegoActivo) cambiarJugador();
+                return;
+            }
+
+            if (tableroEstado[4] === '') {
+                realizarMovimiento(4, 'O');
+                verificarResultado();
+                if (juegoActivo) cambiarJugador();
+                return;
+            }
+
+            const esquinas = [0, 2, 6, 8];
+            for (let i = 0; i < esquinas.length; i++) {
+                const esquina = esquinas[i];
+                if (tableroEstado[esquina] === '') {
+                    realizarMovimiento(esquina, 'O');
+                    verificarResultado();
+                    if (juegoActivo) cambiarJugador();
+                    return;
+                }
+            }
+
+            const celdasVacias = [];
+            for (let i = 0; i < tableroEstado.length; i++) {
+                if (tableroEstado[i] === '') {
+                    celdasVacias.push(i);
+                }
+            }
+            if (celdasVacias.length > 0) {
+                const indiceAleatorio = Math.floor(Math.random() * celdasVacias.length);
+                realizarMovimiento(celdasVacias[indiceAleatorio], 'O');
+                verificarResultado();
+                if (juegoActivo) cambiarJugador();
+                return;
+            }
+        }
+
+        function buscarLineaGanadora(currentBoard, player) {
+            for (let i = 0; i < condicionesGanadoras.length; i++) {
+                const [a, b, c] = condicionesGanadoras[i];
+                const linea = [currentBoard[a], currentBoard[b], currentBoard[c]];
+
+                const countPlayer = linea.filter(cell => cell === player).length;
+                const countEmpty = linea.filter(cell => cell === '').length;
+
+                if (countPlayer === 2 && countEmpty === 1) {
+                    if (currentBoard[a] === '') return a;
+                    if (currentBoard[b] === '') return b;
+                    if (currentBoard[c] === '') return c;
+                }
+            }
+            return -1;
+        }
+
+        celdas.forEach(celda => celda.addEventListener('click', manejarClickCelda));
+        reiniciarBoton.addEventListener('click', reiniciarJuego);
+    </script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Fotos IA</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="img/galeria.ico" type="image/x-icon">
+    <style>
+       
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0f4f8, #e0e7ee); 
+            margin: 0;
+            padding-top: 80px; 
+            color: #333;
+        }
+
+       
+        .barra-navegacion {
+            width: 100%;
+            background-color: #4a5568; 
+            padding: 15px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: fixed; 
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .contenedor-navegacion {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .boton-volver {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 6px;
+            background-color: #6366f1; 
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .boton-volver:hover {
+            background-color: #5856eb;
+            transform: translateY(-2px);
+        }
+
+        .boton-volver i {
+            font-size: 1.1em;
+        }
+
+        
+        .galeria-contenedor {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 2px solid #6366f1;
+            padding-bottom: 10px;
+            display: inline-block; 
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
+        }
+
+        .grilla-imagenes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px; 
+        }
+
+        .item-imagen {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative; 
+        }
+
+        .item-imagen:hover {
+            transform: translateY(-8px); 
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .item-imagen img {
+            width: 100%;
+            height: 200px; 
+            object-fit: cover; 
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .item-imagen:hover img {
+            transform: scale(1.05); 
+        }
+
+        .titulo-imagen {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7); 
+            color: white;
+            padding: 10px;
+            font-size: 1.1em;
+            text-align: center;
+            opacity: 0; 
+            transition: opacity 0.3s ease;
+        }
+
+        .item-imagen:hover .titulo-imagen {
+            opacity: 1; 
+        }
+
+        @media (max-width: 768px) {
+            .grilla-imagenes {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .galeria-contenedor {
+                margin: 20px auto;
+                padding: 15px;
+            }
+            .item-imagen img {
+                height: 180px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="barra-navegacion">
+        <div class="contenedor-navegacion">
+            <a href="index.html" class="boton-volver">
+                <i class="fas fa-arrow-left"></i> Volver a Portafolio
+            </a>
+        </div>
+    </nav>
+
+    <div class="galeria-contenedor">
+        <h1>Galería de Fotos con Estética IA</h1>
+        <div class="grilla-imagenes">
+            <div class="item-imagen">
+                <img src="img/mundodigital.png" alt="Arte Generado por IA 1">
+                <div class="titulo-imagen">Mundo Digital</div>
+            </div>
+            <div class="item-imagen">
+                <img src="img/paisajesintetico.png" alt="Arte Generado por IA 2">
+                <div class="titulo-imagen">Paisaje Sintético</div>
+            </div>
+            <div class="item-imagen">
+                <img src="img/visionesabstractas.png" alt="Arte Generado por IA 3">
+                <div class="titulo-imagen">Visiones Abstractas</div>
+            </div>
+            <div class="item-imagen">
+                <img src="img/retratocibernetico.png" alt="Arte Generado por IA 4">
+                <div class="titulo-imagen">Retrato Cibernético</div>
+            </div>
+            <div class="item-imagen">
+                <img src="img/floraalgoritmica.png" alt="Arte Generado por IA 5">
+                <div class="titulo-imagen">Flora Algorítmica</div>
+            </div>
+            <div class="item-imagen">
+                <img src="img/arquitecturavisual.png" alt="Arte Generado por IA 6">
+                <div class="titulo-imagen">Arquitectura Virtual</div>
+            </div>
+            <div class="item-imagen">
+                <img src="img/sueñoprofundo.png" alt="Arte Generado por IA 7">
+                <div class="titulo-imagen">Sueño Profundo</div>
+            </div>
+            <div class="item-imagen">
+                <img src="img/espaciosinfinitos.png" alt="Arte Generado por IA 8">
+                <div class="titulo-imagen">Espacios Infinitos</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
